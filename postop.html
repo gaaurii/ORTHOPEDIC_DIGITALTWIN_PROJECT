@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Post Operative Analysis</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #fef9c3, #fde68a);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      width: 620px;
+      margin: auto;
+      border-radius: 18px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      font-size: 26px;
+    }
+
+    img {
+      width: 360px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    ul {
+      text-align: left;
+      margin-top: 15px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 14px 26px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>Post Operative Outcome and Recovery Guidance</h2>
+
+  <!-- ✅ POST OPERATIVE IMAGE -->
+  <img id="postopImg">
+
+  <div id="advice"></div>
+
+  <button onclick="go3D()">View 3D Digital Twin</button>
+</div>
+
+<script>
+const c = sessionStorage.getItem("case");
+
+/* 🔥 CRITICAL FIX: exact path + filename */
+document.getElementById("postopImg").src =
+  "cases/" + c + "/post_op.jpg";
+
+const advice = {
+  knee_case1: `
+    <b>Predicted Recovery Time:</b> 6-8 weeks<br>
+    <b>Risk Level:</b> Moderate
+    <ul>
+      <li>Start physiotherapy within the first week</li>
+      <li>Focus on knee flexibility and muscle strengthening</li>
+      <li>Maintain pain control and swelling reduction</li>
+      <li>Normal walking expected by week 6</li>
+    </ul>
+  `,
+  knee_case2: `
+    <b>Predicted Recovery Time:</b> 10-12 weeks<br>
+    <b>Risk Level:</b> High
+    <ul>
+      <li>Extended supervised physiotherapy required</li>
+      <li>Strict monitoring of swelling and stiffness</li>
+      <li>Delayed weight bearing recommended</li>
+      <li>Frequent orthopedic follow ups advised</li>
+    </ul>
+  `,
+  knee_case3: `
+    <b>Predicted Recovery Time:</b> 4-6 weeks<br>
+    <b>Risk Level:</b> Low
+    <ul>
+      <li>Early mobilization under guidance</li>
+      <li>Light strengthening and balance exercises</li>
+      <li>Minimal physiotherapy duration required</li>
+      <li>Daily activities resume within one month</li>
+    </ul>
+  `
+};
+
+document.getElementById("advice").innerHTML = advice[c];
+
+function go3D() {
+  window.location.href = "model.html";
+}
+</script>
+
+</body>
+</html>
