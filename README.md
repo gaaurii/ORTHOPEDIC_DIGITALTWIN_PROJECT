@@ -1,2 +1,3 @@
 # ORTHOPEDIC_DIGITALTWIN_PROJECT
+AI-Based Orthopedic Digital Twin for Knee Surgery Recovery Prediction
 This project presents an AI-driven orthopedic digital twin focused on knee surgery recovery analysis. The system enables users to upload pre-operative knee X-ray images, visualize predicted post-operative outcomes, receive case-specific recovery guidance, and explore an interactive 3D knee digital twin. Designed as a web-based prototype, the project demonstrates how artificial intelligence, visualization, and digital twin concepts can support personalized orthopedic recovery planning and clinical decision support.
