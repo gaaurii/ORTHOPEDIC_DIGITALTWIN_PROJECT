@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Knee Digital Twin</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #0f766e, #22c55e);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      width: 420px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    img {
+      width: 100%;
+      margin-top: 15px;
+      display: none;
+      border-radius: 10px;
+    }
+
+    button {
+      margin-top: 18px;
+      padding: 12px;
+      width: 100%;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>Knee Orthopedic Digital Twin</h2>
+
+  <select id="case">
+    <option value="knee_case1">Case 1 - Standard Recovery</option>
+    <option value="knee_case2">Case 2 - Delayed Recovery</option>
+    <option value="knee_case3">Case 3 - Fast Recovery</option>
+  </select>
+
+  <input type="file" accept="image/*" onchange="preview(event)">
+
+  <img id="preview">
+
+  <button onclick="goNext()">View Post Operative Analysis</button>
+</div>
+
+<script>
+let uploaded = "";
+
+function preview(event) {
+  uploaded = URL.createObjectURL(event.target.files[0]);
+  const img = document.getElementById("preview");
+  img.src = uploaded;
+  img.style.display = "block";
+}
+
+function goNext() {
+  if (!uploaded) {
+    alert("Please upload a pre operative X-ray image.");
+    return;
+  }
+  sessionStorage.setItem("preop", uploaded);
+  sessionStorage.setItem("case", document.getElementById("case").value);
+  window.location.href = "postop.html";
+}
+</script>
+
+</body>
+</html>
